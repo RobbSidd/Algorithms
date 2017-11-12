@@ -1,0 +1,25 @@
+// Create a function that sums two arguments together.
+// If only one argument is provided, then return a function that expects one argument and returns the sum.
+// For example, addTogether(2, 3) should return 5, and addTogether(2) should return a function.
+
+function addTogether() {
+  var array = [].slice.call(arguments);
+  
+  if (!array.every(function(data) {
+    return typeof data === "number";
+  })) {
+    return undefined;
+  }
+  if (array.length === 2) {
+    return array[0] + array[1];
+  }
+  else {
+    var first = array[0];
+    var oneMore = function(second) {
+      return addTogether(first, second);
+    };
+    return oneMore;
+  }
+}
+
+addTogether('f',3);
