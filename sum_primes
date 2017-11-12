@@ -1,0 +1,19 @@
+// Sum All Primes
+function sumPrimes(num) {
+  var array = [];
+  
+  for (var i = 2; i <= num; i++){    
+    for (var j = 2; j <= i; j++) {      
+      if (j === i) {
+        array.push(i);
+      }
+      if (i % j === 0) {
+        break;
+      }
+    }
+  }
+  array = array.reduce(function(a,b){return a + b;});
+  return array;
+}
+
+sumPrimes(90);
